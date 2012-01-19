@@ -5,7 +5,7 @@
 ** Login   <phil@reseau-libre.net>
 **
 ** Started on  jeu. 19 janv. 2012 20:36:06 CET Philippe THIERRY
-** Last update jeu. 19 janv. 2012 20:48:23 CET Philippe THIERRY
+** Last update jeu. 19 janv. 2012 21:29:29 CET Philippe THIERRY
 **
 ** Copyright (C) 2009 - Philippe THIERRY
 **
@@ -34,18 +34,59 @@
 **
 */
 
+#include <string.h>
 #include "libusbwall.h"
+#include "usbwall_init.h"
 
-int usbwall_key_add(uint16_t	vendorid __attribute__((unused)),
-                    uint16_t	productid __attribute__((unused)),
-                    char	*serial __attribute__((unused)))
+/*!
+** \brief usbwall_key_add
+** 
+** \param vendorid 
+** \param productid 
+** \param serial 
+** 
+** \return 
+*/
+int usbwall_key_add(uint16_t	vendorid,
+                    uint16_t	productid,
+                    char	*serial)
 {
+  procfs_info_t usbwallinfo;
+  int fd = -1;
+  int res = -1;
+
+  if (!usbwall_init_done()) {
+    return EAGAIN;
+  }
+  usbwallinfo.info.keyflags = USBWALL_KEY_ADD | USBWALL_KEY_ACCESS_READ | USBWALL_KEY_ACCESS_WRITE | USBWALL_KEY_ACCESS_EXEC;
+  usbwallinfo.info.idVendor = vendorid;
+  usbwallinfo.info.idProduct = productid;
+  strncpy(usbwallinfo.info.idSerialNumber, serial, 32);
+
+  fd = open("/proc/usbwall/key_ctrl", O_WRONLY);
+  res = write(fd,usbwallinfo.buffer, sizeof(struct mass_storage_info));
+  close(fd);
   return 0;
 }
 
-int usbwall_key_del(uint16_t	vendorid __attribute__((unused)),
-                    uint16_t	productid __attribute__((unused)),
-                    char	*serial __attribute__((unused)))
+int usbwall_key_del(uint16_t	vendorid,
+                    uint16_t	productid,
+                    char	*serial)
 {
+  procfs_info_t usbwallinfo;
+  int fd = -1;
+  int res = -1;
+
+  if (!usbwall_init_done()) {
+    return EAGAIN;
+  }
+  usbwallinfo.info.keyflags = USBWALL_KEY_DEL;
+  usbwallinfo.info.idVendor = vendorid;
+  usbwallinfo.info.idProduct = productid;
+  strncpy(usbwallinfo.info.idSerialNumber, serial, 32);
+
+  fd = open("/proc/usbwall/key_ctrl", O_WRONLY);
+  res = write(fd,usbwallinfo.buffer, sizeof(struct mass_storage_info));
+  close(fd);
   return 0;
 }

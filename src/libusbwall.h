@@ -5,7 +5,7 @@
 ** Login   <phil@reseau-libre.net>
 **
 ** Started on  jeu. 19 janv. 2012 20:36:56 CET Philippe THIERRY
-** Last update jeu. 19 janv. 2012 20:48:33 CET Philippe THIERRY
+** Last update jeu. 19 janv. 2012 21:28:03 CET Philippe THIERRY
 **
 ** Copyright (C) 2009 - Philippe THIERRY
 **
@@ -42,13 +42,14 @@
 #ifndef LIBUSBWALL_H_
 # define LIBUSBWALL_H_
 
+#include <stdint.h>
+#include <linux/usb/usbwall.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <stdint.h>
 #include <errno.h>
 
 int	usbwall_init(void);
