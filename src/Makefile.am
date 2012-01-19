@@ -15,7 +15,7 @@ lib_LTLIBRARIES = libusbwall.la
 AM_CFLAGS = $(CFLAGS)
 
 # default installation dir
-instdir = /usr/local
+instdir = /usr/local/include
 
 libusbwall_la_SOURCES = usbwall_init.c \
                      usbwall_keypass.c
