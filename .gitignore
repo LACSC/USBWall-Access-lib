@@ -3,3 +3,13 @@
 *~
 .*.swp
 .*.swo
+Makefile
+*.la
+*.lo
+*/.libs/*
+.deps
+libtool
+config.h
+config.log
+config.status
+stamp-h1
