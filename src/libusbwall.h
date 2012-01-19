@@ -5,7 +5,7 @@
 ** Login   <phil@reseau-libre.net>
 **
 ** Started on  jeu. 19 janv. 2012 20:36:56 CET Philippe THIERRY
-** Last update jeu. 19 janv. 2012 21:28:03 CET Philippe THIERRY
+** Last update jeu. 19 janv. 2012 21:30:41 CET Philippe THIERRY
 **
 ** Copyright (C) 2009 - Philippe THIERRY
 **
@@ -56,12 +56,12 @@ int	usbwall_init(void);
 
 void	usbwall_release(void);
 
-int usbwall_key_add(uint16_t	vendorid __attribute__((unused)),
-                    uint16_t	productid __attribute__((unused)),
-                    char	*serial __attribute__((unused)));
+int usbwall_key_add(uint16_t	vendorid,
+                    uint16_t	productid,
+                    char	*serial);
 
-int usbwall_key_del(uint16_t	vendorid __attribute__((unused)),
-                    uint16_t	productid __attribute__((unused)),
-                    char	*serial __attribute__((unused)));
+int usbwall_key_del(uint16_t	vendorid,
+                    uint16_t	productid,
+                    char	*serial);
 
 #endif /* !LIBUSBWALL_H_ */
