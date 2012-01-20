@@ -10,8 +10,15 @@
 
 SUBDIRS =  .
 
+all: doc-am usermanual
+
 doc-am:
 	doxygen Doxyfile
+
+usermanual:
+	VERSION=$(VERSION) $(MAKE) -C usermanual
+
+.PHONY: usermanual
 
 EXTRA_DIST = 
 

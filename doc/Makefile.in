@@ -558,8 +558,15 @@ uninstall-am:
 	uninstall uninstall-am
 
 
+all: doc-am usermanual
+
 doc-am:
 	doxygen Doxyfile
+
+usermanual:
+	VERSION=$(VERSION) $(MAKE) -C usermanual
+
+.PHONY: usermanual
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

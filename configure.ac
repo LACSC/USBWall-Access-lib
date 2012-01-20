@@ -6,14 +6,14 @@
 ## Login   <Philippe THIERRY@reseau-libre.net>
 ##
 ## Started on  jeu. 19 janv. 2012 20:57:40 CET Philippe THIERRY
-## Last update jeu. 19 janv. 2012 21:09:12 CET Philippe THIERRY
+## Last update ven. 20 janv. 2012 14:27:36 CET Philippe THIERRY
 ##
 
 
 #############################################################################
 ## Preambule
 #############################################################################
-AC_INIT([libusbwall-0.1], [libusbwall-0.1], [phil@reseau-libre.net], [Philippe THIERRY])
+AC_INIT([libusbwall], [0.1], [phil@reseau-libre.net], [Philippe THIERRY])
 AM_INIT_AUTOMAKE([1.9.5 foreign dist-bzip2 no-dist-gzip foreign])
 AC_CONFIG_SRCDIR([src/usbwall_init.c])
 AM_CONFIG_HEADER(config.h)
