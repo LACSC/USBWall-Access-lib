@@ -13,7 +13,7 @@
 %% Document style definition
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[twoside,a4paper,11pt,titlepage]{article} 	% document type
+\documentclass[twoside,a4paper,11pt,titlepage]{report} 	% document type
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -80,6 +80,8 @@
   \usepackage{pst-tree} % For trees
   \usepackage{pst-3d} % For three dimensionnal graph
 \end{psinputs}
+
+\usepackage{doxygen}
 
 \newcommand{\docversion}{@VERSION@}
 
@@ -201,30 +203,26 @@
 %% Subfiles inclusion
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newpage
 
-\section{Introduction}
+\chapter{Introduction}
 
-\subsection{The aim of the USBWall project}
+\section{The aim of the USBWall project}
 
-\subsection{About the software architecture}
+\section{About the software architecture}
 
-\newpage
 
-\section{Compiling and installing the libusbwall}
+\chapter{Compiling and installing the libusbwall}
 
-\subsection{Prerequisites}
+\section{Prerequisites}
 
-\subsection{compilation and deployment}
+\section{compilation and deployment}
 
-\newpage
 
-\section{Using Libusbwall}
+\chapter{Using Libusbwall}
 
-\subsection{Linking to the library}
+\section{The libusbwall API}
 
-\subsection{The libusbwall API}
-
+\input{latex/libusbwall_8h.tex}
 
 
 \end{document}

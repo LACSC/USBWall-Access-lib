@@ -18,6 +18,9 @@ LATEXOPT=-shell-escape
 BIBTEX=bibtex
 PDFVIEWER?=acroread
 
+DOXYGEN=doxygen
+DOXYFILE=Doxyfile
+
 VERSION ?= 0.0
 
 RM=rm
@@ -62,6 +65,8 @@ pdf : prepare
 
 prepare:
 	$(shell cat $(SOURCE).in | sed -re 's:@VERSION@:$(VERSION):' > $(SOURCE))
+	(doxygen Doxyfile)
+	$(shell cp latex/doxygen.sty .)
 
 clean : 
 	$(RM) $(RMFLAGS) $(OBJS) $(TODEL)
