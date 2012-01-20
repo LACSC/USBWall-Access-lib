@@ -1,11 +1,10 @@
-/*
-** File libusbwall.h for project libusbwall
+﻿/*
+** File usbwall_infos.c for project libusbwall
 **
 ** Made by Philippe THIERRY
 ** Login   <phil@reseau-libre.net>
 **
-** Started on  jeu. 19 janv. 2012 20:36:56 CET Philippe THIERRY
-** Last update jeu. 19 janv. 2012 21:30:41 CET Philippe THIERRY
+** Started on  ven. 20 janv. 2012 12:43:26 CET Philippe THIERRY
 **
 ** Copyright (C) 2009 - Philippe THIERRY
 **
@@ -23,8 +22,8 @@
 ** along with this program; if not, write to the Free Software
 ** Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
-/**
-** \file libusbwall.h
+/*
+** \file usbwall_infos.c
 **
 ** Brief documentation on one line
 ** Detailed documentation
@@ -32,38 +31,27 @@
 **
 ** \author Philippe THIERRY
 **
-** \requirements
-** This header is compliant of the following requirements :
-** REQ_CODE_QUALITY_130
-** REQ_CODE_QUALITY_140
-** REQ_CODE_QUALITY_150
 */
 
-#ifndef LIBUSBWALL_H_
-# define LIBUSBWALL_H_
-
-#include <stdint.h>
-#include <linux/usb/usbwall.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <stdio.h>
 #include <stdlib.h>
+#include <fcntl.h>
 #include <unistd.h>
-#include <errno.h>
+#include "libusbwall.h"
 
-int	usbwall_init(void);
+char	*usbwall_get_status()
+{
+  int fd = -1;
+  int res = 0;
+  int count = 255;
+  char	*buffer = NULL;
 
-void	usbwall_release(void);
-
-int usbwall_key_add(uint16_t	vendorid,
-                    uint16_t	productid,
-                    char	*serial);
-
-int usbwall_key_del(uint16_t	vendorid,
-                    uint16_t	productid,
-                    char	*serial);
-
-char	*usbwall_get_status(void);
-
-#endif /* !LIBUSBWALL_H_ */
+  buffer = malloc(count + 1);
+  fd = open("/proc/usbwall/status", O_RDONLY);
+  res = read(fd, buffer, count);
+  if (res == -1) {
+      return NULL;
+  }
+  buffer[res] = '\0';
+  return buffer;
+  close(fd);
+}
