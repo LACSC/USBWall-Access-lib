@@ -65,6 +65,9 @@ int usbwall_key_add(uint16_t	vendorid,
 
   fd = open("/proc/usbwall/key_ctrl", O_WRONLY);
   res = write(fd,usbwallinfo.buffer, sizeof(struct mass_storage_info));
+  if (res == -1) {
+    return 1;
+  }
   close(fd);
   return 0;
 }
@@ -87,6 +90,9 @@ int usbwall_key_del(uint16_t	vendorid,
 
   fd = open("/proc/usbwall/key_ctrl", O_WRONLY);
   res = write(fd,usbwallinfo.buffer, sizeof(struct mass_storage_info));
+  if (res == -1) {
+    return 1;
+  }
   close(fd);
   return 0;
 }
