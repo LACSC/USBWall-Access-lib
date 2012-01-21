@@ -10,6 +10,11 @@
 
 SUBDIRS = src doc .
 
+doc:
+	$(MAKE) -C doc all
+
+.PHONY: doc
+
 ACLOCAL_AMFLAGS = -I m4
 
 EXTRA_DIST = AUTHORS README INSTALL ChangeLog 

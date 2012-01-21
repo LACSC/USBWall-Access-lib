@@ -1,0 +1,228 @@
+%%
+%%
+%% manual.tex for libusbwall in /home/phil/Travail/ECE/PFE/USBWALL/usbwall-lib/doc/usermanual
+%%
+%% Made by Philippe THIERRY
+%% Login   <Philippe THIERRYreseau-libre.net>
+%%
+%% Started on  ven. 20 janv. 2012 14:01:55 CET Philippe THIERRY
+%% Last update ven. 20 janv. 2012 14:23:37 CET Philippe THIERRY
+%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Document style definition
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[twoside,a4paper,11pt,titlepage]{report} 	% document type
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Packages integration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[hundred]{vrsion}				% versioning support
+\usepackage[latin1]{inputenc}				% char format
+\usepackage{lscape}
+\usepackage{rotating}
+\usepackage[usenames,dvipsnames]{color}					% basic color support
+\usepackage[T1]{fontenc} 				% caracteres norme iso-8859.
+			 				% risque de ne pas marcher avec les fichiers crees
+                         				% sous windows.
+\usepackage[francais]{babel}			% french support
+\usepackage{listings}					% lists support. Used for code
+\usepackage{amsfonts}					% special fonts support (math, etc)
+\usepackage{amsmath}
+\usepackage{amssymb}					% special symbols support
+\usepackage{graphicx}					% graphics integration support
+\usepackage{fancyhdr}					% beautiful headers support
+\usepackage{lastpage}					% \lastpage support
+\usepackage{textcomp}					%
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{calc}					% counter support
+\usepackage{datetime}					% personnalize dates
+\usepackage{tabularx}					% tabular with more conf
+\usepackage{array}					% tabular replacement
+\usepackage{chngpage}					% change page layout localy
+\usepackage{minitoc}
+%
+\usepackage{makeidx}
+\usepackage[pdftex,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue
+           ]{hyperref}					% allow interal links
+           						% and doc content list 
+\usepackage[all]{hypcap}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{times}
+\usepackage{ifpdf}
+\usepackage{appendix} 
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{alltt}
+\usepackage[sectionbib]{natbib}
+\usepackage{chapterbib}
+
+
+\usepackage[Glenn]{fncychap}				% 'Glenn' chapter titles
+\usepackage{supertabular}
+
+
+% charts support
+\usepackage{pdftricks}
+\begin{psinputs}
+  \usepackage{pstricks}
+  \usepackage{multido}
+  \usepackage{epsfig}
+  \usepackage{pst-grad} % For gradients
+  \usepackage{pst-plot} % For axes
+  \usepackage{pst-tree} % For trees
+  \usepackage{pst-3d} % For three dimensionnal graph
+\end{psinputs}
+
+\usepackage{doxygen}
+
+\newcommand{\docversion}{@VERSION@}
+
+\usepackage{titlepage}
+%
+
+% charts support
+\usepackage{pstricks}
+\definecolor{A-color}{hsb}{0.00 ,0.9, 0.9}
+\definecolor{B-color}{hsb}{0.65 ,0.9, 0.9}
+\SpecialCoor
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Macro definition
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% Avoiding page orphalin %%%%
+%%%% debut macro %%%%
+\widowpenalty=10000
+\clubpenalty=10000
+\raggedbottom
+%%%% fin macro %%%%
+
+%%%% debut macro %%%%
+\newenvironment{changemargin}[2]{\begin{list}{}{%	%
+\addtolength{\leftmargin}{#1}%				% Support for local margin
+\addtolength{\rightmargin}{#2}%				% update.
+}\item }{\end{list}}					%
+%%%% fin macro %%%%
+
+% index support
+\makeindex						% call for index generation
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Code insertion support, using listing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% add code support
+\definecolor{colKeys}{rgb}{0,0,1}			%
+\definecolor{colIdentifier}{rgb}{0,0,0}			% Support for code coloration
+\definecolor{colComments}{rgb}{0,0.5,1}			% Specify some colors
+\definecolor{colString}{rgb}{0.6,0.1,0.1}		%
+
+\lstset{%						% configuration of listings 
+ float=hbp,% 						%
+ basicstyle=\ttfamily\small, % 				% For code integration
+ identifierstyle=\color{colIdentifier}, % 		% Use the above codekeys
+ keywordstyle=\color{colKeys}, % 			% 
+ stringstyle=\color{colString}, % 			%
+ commentstyle=\color{colComments}, % 			%
+ columns=flexible, % 					%
+ tabsize=2, % 						%
+ frame=trBL, % 						%
+ frameround=tttt, % 					%
+ extendedchars=true, % 					%
+ showspaces=false, % 					%
+ showstringspaces=false, % 				%
+ numbers=left, % 					%
+ numberstyle=\tiny, % 					%
+ breaklines=true, % 					%
+ breakautoindent=true, % 				%
+ captionpos=b,% 					%
+ xrightmargin=0.5cm, % 					%
+ xleftmargin=0.5cm 					%
+} 							%
+
+\lstloadlanguages{make,C}
+
+\lstdefinelanguage{Make}
+{
+    keywords={ifeq,ifneq,ifdef,ifnded,else,endif,include},
+    sensitive=true,
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Title page configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Headers and footers configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{fancy}					% specify page style
+\pagenumbering{roman}					% specify page numbering
+\fancyhf{}						% clear previous headers
+\addtolength{\headheight}{48pt}				% update header height
+
+%\usepackage[first]{draftcopy}				% mark doc as 'draft'
+
+
+%opening
+\begin{document}
+
+\renewcommand{\headrulewidth}{0pt}			% disactive header bar
+
+\manualTitle
+
+\fancyfoot[RO]{\thepage/\pageref{LastPage}}		% Right Odd foot
+\fancyfoot[RE]{}					% Right Even foot
+\fancyfoot[LE]{\thepage/\pageref{LastPage}}		% Left Even foot
+\fancyfoot[LO]{}					% Left Odd foot
+
+\cleardoublepage					% double blank page
+\tableofcontents					% print table of contents
+\pagenumbering{arabic}					% update page number to arabic
+
+\renewcommand{\headrulewidth}{1pt}			% allow header bar
+\fancyhead[LO]{\leftmark}				% Left Odd header
+\fancyhead[RE]{}					% Right Even header
+\fancyhead[RO]{}					% Right Odd header
+\fancyhead[LE]{\rightmark}				% Left Even header
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Subfiles inclusion
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\chapter{Introduction}
+
+\section{The aim of the USBWall project}
+
+\section{About the software architecture}
+
+
+\chapter{Compiling and installing the libusbwall}
+
+\section{Prerequisites}
+
+\section{compilation and deployment}
+
+
+\chapter{Using Libusbwall}
+
+\section{The libusbwall API}
+
+\input{latex/libusbwall_8h.tex}
+
+
+\end{document}

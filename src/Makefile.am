@@ -18,7 +18,8 @@ AM_CFLAGS = $(CFLAGS)
 instdir = /usr/local/include
 
 libusbwall_la_SOURCES = usbwall_init.c \
-                     usbwall_keypass.c
+                     usbwall_keypass.c \
+		     usbwall_infos.c
 
 noinst_HEADERS = usbwall_init.h
 

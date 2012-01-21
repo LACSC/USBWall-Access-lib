@@ -26,17 +26,11 @@
 /**
 ** \file libusbwall.h
 **
-** Brief documentation on one line
-** Detailed documentation
-** On multiple lines...
+** This is the libusbwall.h API inteface. This file defines all the exported functions
+** of the libusbwall library.
 **
 ** \author Philippe THIERRY
 **
-** \requirements
-** This header is compliant of the following requirements :
-** REQ_CODE_QUALITY_130
-** REQ_CODE_QUALITY_140
-** REQ_CODE_QUALITY_150
 */
 
 #ifndef LIBUSBWALL_H_
@@ -52,16 +46,68 @@
 #include <unistd.h>
 #include <errno.h>
 
+/*!
+ ** \brief initialize the libusbwall.
+ **
+ ** While this function is not called, any other libusbwall function will return EBUSY.
+ ** 
+ ** This functions does the necessary checks in order to validate the underlying usbwall module. If
+ ** the module is not loaded or if its version does not correspond to the one supported by this
+ ** version of libusbwall, this function will return 1. Otherwise this function return 0.
+ ** 
+ ** \return 1 if the environment is not supported, or 0.
+ */
 int	usbwall_init(void);
 
+/*!
+ ** \brief release the usbwall function. Release any private library data associated to the current context.
+ **
+ ** By now, this function doesn't do anything. Nevertheless, because there is an initialization
+ ** function, it is cleaner to add an associated release function.
+ */
 void	usbwall_release(void);
 
+/*!
+ ** \brief Add a new key to the USBWall module white-list.
+ **
+ ** This function give the necessary informations to the USBWall module in order to accept the given
+ ** key. By default, the flags passed to the module are
+ ** USBWALL_KEY_ACCESS_READ, USBWALL_KEY_ACCESS_WRITE and USBWALL_KEY_ACCESS_EXEC.
+ **
+ ** These flags will be configurable in a future version of this library.
+ ** 
+ ** \param vendorid the vendor id value, as shown in lsusb
+ ** \param productid the product id value, as shown in lsusb
+ ** \param serial the product serial number, as shown in lsusb
+ ** 
+ ** \return 0 if the key has been correctly added, or 1.
+ */
 int usbwall_key_add(uint16_t	vendorid,
                     uint16_t	productid,
                     char	*serial);
 
+/*!
+ ** \brief Delete a given key from the module whitelist.
+ **
+ ** This function delete the usb key identifier from the module internal list, if found.
+ ** 
+ ** \param vendorid the vendor id value, as shown in lsusb
+ ** \param productid the product id value, as shown in lsusb
+ ** \param serial the product serial number, as shown in lsusb
+ ** 
+ ** \return 0 if the key has been found and deleted, or 1.
+ */
 int usbwall_key_del(uint16_t	vendorid,
                     uint16_t	productid,
                     char	*serial);
+
+/*!
+ ** \brief return the current module status.
+ **
+ ** Ask the module for its current status and return the result through a string.
+ ** 
+ ** \return the module status.
+ */
+char	*usbwall_get_status(void);
 
 #endif /* !LIBUSBWALL_H_ */
