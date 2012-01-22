@@ -37,7 +37,7 @@ OBJS	     = $(SOURCE:.tex=.aux) $(SOURCE:.tex=.log) $(SOURCE:.tex=.out) $(SOURCE
                $(SOURCE:.tex=.ist) $(SOURCE:.tex=.glo) $(SOURCE:.tex=.idx) $(SOURCE:.tex=.lof) $(SOURCE) \
                $(SOURCE:.tex=.brf) $(SOURCE:.tex=.bmt) $(SOURCE:.tex=.ind) $(SOURCE:.tex=.ilg) $(SOURCE:.tex=.maf) \
 	       $(SOURCE:.tex=.lot) *.ps *.mlf* *.mlt* *.mtc* $(SOURCE_PREFIX)-fig*.tex *.log $(SOURCE_PREFIX)-fig*.pdf tmp.inputs
-TODEL	     = tags *~ .*.swp
+TODEL	     = tags *~ .*.swp doxygen.sty
 
 #############################################################################
 ## rules
@@ -65,8 +65,7 @@ pdf : prepare
 
 prepare:
 	$(shell cat $(SOURCE).in | sed -re 's:@VERSION@:$(VERSION):' > $(SOURCE))
-	(doxygen Doxyfile)
-	$(shell cp latex/doxygen.sty .)
+	(doxygen Doxyfile && cp latex/doxygen.sty .)
 
 clean : 
 	$(RM) $(RMFLAGS) $(OBJS) $(TODEL)

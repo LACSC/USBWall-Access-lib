@@ -15,6 +15,10 @@ all: doc-am usermanual
 doc-am:
 	doxygen Doxyfile
 
+clean-local:
+	rm -rf latex html usermanual/latex
+	$(MAKE) -C usermanual clean
+
 usermanual:
 	VERSION=$(VERSION) $(MAKE) -C usermanual
 
@@ -23,4 +27,3 @@ usermanual:
 EXTRA_DIST = 
 
 CLEANFILES = *~ .*.swp .*.swo output* *.gcov *.gprof
-

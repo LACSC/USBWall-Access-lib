@@ -5,7 +5,7 @@
 ** Login   <phil@reseau-libre.net>
 **
 ** Started on  jeu. 19 janv. 2012 20:36:56 CET Philippe THIERRY
-** Last update jeu. 19 janv. 2012 21:30:41 CET Philippe THIERRY
+** Last update dim. 22 janv. 2012 15:42:09 CET Philippe THIERRY
 **
 ** Copyright (C) 2009 - Philippe THIERRY
 **
@@ -109,5 +109,12 @@ int usbwall_key_del(uint16_t	vendorid,
  ** \return the module status.
  */
 char	*usbwall_get_status(void);
+
+/*!
+** \brief return the release code of the module
+** 
+** \return a positive value corresponding to the release code, or 0 if it fails to get it
+*/
+long	usbwall_get_release(void);
 
 #endif /* !LIBUSBWALL_H_ */
