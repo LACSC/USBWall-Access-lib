@@ -211,6 +211,14 @@
 
 \section{About the software architecture}
 
+\paragraph{}
+The USBWall system use the software architecture descibed in Figure \ref{fig:usbwall_block_dgram}.
+
+\begin{figure}[!h]
+\label{fig:usbwall_block_dgram}
+\input{pictures/usbwall_block_dgram.tex}
+\caption{USBWall macroscopic software architecture}
+\end{figure}
 
 \chapter{Compiling and installing the libusbwall}
 
