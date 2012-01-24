@@ -20,66 +20,56 @@
 %% Packages integration
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[hundred]{vrsion}				% versioning support
-\usepackage[latin1]{inputenc}				% char format
-\usepackage{lscape}
-\usepackage{rotating}
-\usepackage[usenames,dvipsnames]{color}					% basic color support
-\usepackage[T1]{fontenc} 				% caracteres norme iso-8859.
-			 				% risque de ne pas marcher avec les fichiers crees
-                         				% sous windows.
-\usepackage[francais]{babel}			% french support
-\usepackage{listings}					% lists support. Used for code
-\usepackage{amsfonts}					% special fonts support (math, etc)
-\usepackage{amsmath}
-\usepackage{amssymb}					% special symbols support
-\usepackage{graphicx}					% graphics integration support
-\usepackage{fancyhdr}					% beautiful headers support
-\usepackage{lastpage}					% \lastpage support
-\usepackage{textcomp}					%
-\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
-\usepackage{calc}					% counter support
-\usepackage{datetime}					% personnalize dates
-\usepackage{tabularx}					% tabular with more conf
-\usepackage{array}					% tabular replacement
-\usepackage{chngpage}					% change page layout localy
-\usepackage{minitoc}
-%
+\usepackage[english]{babel}
+\usepackage{a4wide}
+\usepackage[Glenn]{fncychap}
 \usepackage{makeidx}
-\usepackage[pdftex,
-            pagebackref=true,
-            colorlinks=true,
-            linkcolor=blue
-           ]{hyperref}					% allow interal links
-           						% and doc content list 
-\usepackage[all]{hypcap}
+\usepackage{fancyhdr}
+\usepackage[dvips]{graphicx}
 \usepackage{multirow}
 \usepackage{multicol}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{alltt}
 \usepackage{times}
 \usepackage{ifpdf}
-\usepackage{appendix} 
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{alltt}
-\usepackage[sectionbib]{natbib}
-\usepackage{chapterbib}
-
-
-\usepackage[Glenn]{fncychap}				% 'Glenn' chapter titles
-\usepackage{supertabular}
-
-
-% charts support
+\usepackage{lastpage}
+\usepackage{calc}
+\usepackage{datetime}
+\usepackage{chngpage}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage[toc,page]{appendix}
+\usepackage{color}
+\usepackage[hundred]{vrsion}
 \usepackage{pdftricks}
+\usepackage{eso-pic}
+%\usepackage{lineno}
+
+% a little more configuration about pstricks...
 \begin{psinputs}
-  \usepackage{pstricks}
-  \usepackage{multido}
-  \usepackage{epsfig}
-  \usepackage{pst-grad} % For gradients
-  \usepackage{pst-plot} % For axes
-  \usepackage{pst-tree} % For trees
-  \usepackage{pst-3d} % For three dimensionnal graph
+\usepackage{pstricks}
+\usepackage{multido}
+\usepackage{pst-all}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+\usepackage{epsfig}
 \end{psinputs}
+
+\ifpdf
+\usepackage[pdftex,
+    pagebackref=true,
+    colorlinks=true,
+    linkcolor=blue
+    ]{hyperref}
+\else
+    \usepackage[ps2pdf,
+    pagebackref=true,
+    colorlinks=true,
+    linkcolor=blue
+    ]{hyperref}
+    \usepackage{pspicture}
+\fi
 
 \usepackage{doxygen}
 
@@ -93,6 +83,17 @@
 \definecolor{A-color}{hsb}{0.00 ,0.9, 0.9}
 \definecolor{B-color}{hsb}{0.65 ,0.9, 0.9}
 \SpecialCoor
+
+\definecolor{subsubseccol}{rgb}{0.7,0,0}
+\definecolor{subseccol}{rgb}{0,0,0.7}
+
+\usepackage[calcwidth]{titlesec}
+\titleformat{\subsection}
+{\color{subseccol}\normalfont\Large\bfseries}{\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+{\color{subsubseccol}\normalfont\large\bfseries}{\thesubsubsection}{1em}{}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -210,6 +211,14 @@
 
 \section{About the software architecture}
 
+\paragraph{}
+The USBWall system use the software architecture descibed in Figure \ref{fig:usbwall_block_dgram}.
+
+\begin{figure}[!h]
+\label{fig:usbwall_block_dgram}
+\input{pictures/usbwall_block_dgram.tex}
+\caption{USBWall macroscopic software architecture}
+\end{figure}
 
 \chapter{Compiling and installing the libusbwall}
 

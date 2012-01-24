@@ -1,0 +1,41 @@
+commit 7e4b91e86ef51b17148a637d675e603bd0123138
+Author: Philippe Thierry <phil@reseau-libre.net>
+Date:   Thu Jan 19 21:31:11 2012 +0100
+
+    removed ubused attributes from keyadd and keydel.
+
+commit d9b78a7ebf523ad861e4d03d5d04053718834611
+Author: Philippe Thierry <phil@reseau-libre.net>
+Date:   Thu Jan 19 21:30:04 2012 +0100
+
+    add support for usbwall_key_add and usbwall_key_del.
+
+commit e402dc7c43bffc541dad4606f450c4203462f956
+Author: Philippe Thierry <phil@reseau-libre.net>
+Date:   Thu Jan 19 21:18:21 2012 +0100
+
+    add updated gitignore
+
+commit ecb56531a5345c17cd5ff15dc3a2711c7930626b
+Author: Philippe Thierry <phil@reseau-libre.net>
+Date:   Thu Jan 19 21:16:46 2012 +0100
+
+    add correct path for libusbwall.h
+
+commit bfccd0d77f4df46a7efa8aed19c0198126332e98
+Author: Philippe Thierry <phil@reseau-libre.net>
+Date:   Thu Jan 19 21:12:29 2012 +0100
+
+    moved to autotools based configuration mode.
+
+commit d5e9614d72a77912755bb4e1167ce64da90b7ab1
+Author: Philippe Thierry <phil@reseau-libre.net>
+Date:   Thu Jan 19 20:56:51 2012 +0100
+
+    add first release. empty shell by now.
+
+commit 9cf206e3e8bfb92674d2b1d0c9518ae711e0c369
+Author: Philippe Thierry <phil@reseau-libre.net>
+Date:   Thu Jan 19 20:23:54 2012 +0100
+
+    initial commit.

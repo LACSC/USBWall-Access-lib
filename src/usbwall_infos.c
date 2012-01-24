@@ -48,10 +48,30 @@ char	*usbwall_get_status()
   buffer = malloc(count + 1);
   fd = open("/proc/usbwall/status", O_RDONLY);
   res = read(fd, buffer, count);
+  close(fd);
   if (res == -1) {
       return NULL;
   }
   buffer[res] = '\0';
   return buffer;
+}
+
+long	usbwall_get_release()
+{
+  int fd = -1;
+  int res = 0;
+  int count = 15;
+  char	buffer[16];
+  long release = 0;
+
+  fd = open("/proc/usbwall/release", O_RDONLY);
+  res = read(fd, buffer, count);
   close(fd);
+  if (res == -1) {
+      return 0;
+  }
+  buffer[res] = '\0';
+  release = atoi(buffer);
+  return release;
+
 }

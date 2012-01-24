@@ -5,7 +5,7 @@
 ** Login   <phil@reseau-libre.net>
 **
 ** Started on  jeu. 19 janv. 2012 20:35:50 CET Philippe THIERRY
-** Last update jeu. 19 janv. 2012 20:46:53 CET Philippe THIERRY
+** Last update dim. 22 janv. 2012 15:37:21 CET Philippe THIERRY
 **
 ** Copyright (C) 2009 - Philippe THIERRY
 **
@@ -37,17 +37,41 @@
 #include "usbwall_init.h"
 #include "libusbwall.h"
 
+enum usbwall_errorcodes {
+  LIBUSBWALL_ERROR_NOMODULE = 1,
+  LIBUSBWALL_ERROR_MODVERSION
+};
+
+/*!
+ * \def the minimum module version over which this version of the library works.
+ */
+#define USBWALL_MINVERSION	(0 << 16 | 2 << 8 | 1)
+
 static int context = 0;
 
 int	usbwall_init(void)
 {
   int fd = -1;
+  char buf[16];
+  int count = 0;
+  int release = 0;
 
-  fd = open("/proc/usbwall/key_ctrl", O_WRONLY);
+  fd = open("/proc/usbwall/release", O_WRONLY);
   if (fd == -1) {
     return ENODEV;
   }
-  context = 1;
+  count = read(fd, buf, 15);
+
+  if (count > 0) {
+    /* checking release... */
+    release = atoi(buf);
+    if (release < USBWALL_MINVERSION) {
+      return LIBUSBWALL_ERROR_MODVERSION;
+    }
+    context = 1;
+  } else {
+    return LIBUSBWALL_ERROR_NOMODULE;
+  }
   return 0;
 }
 
