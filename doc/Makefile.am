@@ -13,17 +13,18 @@ SUBDIRS =  .
 all: doc-am usermanual
 
 doc-am:
-	doxygen Doxyfile
+	doxygen $(srcdir)/Doxyfile
 
 clean-local:
 	rm -rf latex html usermanual/latex
 	$(MAKE) -C usermanual clean
 
 usermanual:
-	VERSION=$(VERSION) $(MAKE) -C usermanual
+	$(shell if [ $(srcdir) != $(builddir) ]; then cp -ru $(srcdir)/usermanual $(builddir); fi;)
+	VERSION=$(VERSION) SRCDIR=$(srcdir) BUILDDIR=$(builddir) $(MAKE) -C $(builddir)/usermanual
 
 .PHONY: usermanual
 
-EXTRA_DIST = 
+EXTRA_DIST = $(srcdir)/Doxyfile $(srcdir)/usermanual/manual.tex.in $(srcdir)usermanual/Doxyfile $(srcdir)/usermanual/Makefile $(srcdir)/usermanual/titlepage.sty $(srcdir)/usermanual/pictures/ECE_LOGO_FR.png $(srcdir)/usermanual/pictures/usbwall_block_diagram.tex  
 
 CLEANFILES = *~ .*.swp .*.swo output* *.gcov *.gprof

@@ -64,8 +64,9 @@ pdf : prepare
 	mv $(SOURCE:.tex=.pdf) $(TARGET).pdf
 
 prepare:
-	$(shell cat $(SOURCE).in | sed -re 's:@VERSION@:$(VERSION):' > $(SOURCE))
-	(doxygen Doxyfile && cp latex/doxygen.sty .)
+	$(shell cat $(SOURCE).in | sed -re 's:@VERSION@:$(VERSION):' > $(SOURCE); \
+  	  cat Doxyfile.in | sed -re 's:@SRCDIR@:$(SRCDIR)/usermanual:' > Doxyfile; \
+	  doxygen Doxyfile && cp latex/doxygen.sty . )
 
 clean : 
 	$(RM) $(RMFLAGS) $(OBJS) $(TODEL)
