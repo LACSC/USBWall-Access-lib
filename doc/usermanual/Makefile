@@ -22,6 +22,8 @@ DOXYGEN=doxygen
 DOXYFILE=Doxyfile
 
 VERSION ?= 0.0
+SRCDIR ?= .
+BUILDDIR ?= .
 
 RM=rm
 RMFLAGS=-rf
@@ -65,8 +67,8 @@ pdf : prepare
 
 prepare:
 	$(shell cat $(SOURCE).in | sed -re 's:@VERSION@:$(VERSION):' > $(SOURCE); \
-  	  cat Doxyfile.in | sed -re 's:@SRCDIR@:$(SRCDIR)/usermanual:' > Doxyfile; \
-	  doxygen Doxyfile && cp latex/doxygen.sty . )
+  	  cat Doxyfile.in | sed -re 's:@SRCDIR@:$(SRCDIR)/usermanual:' > Doxyfile;)
+	  (doxygen Doxyfile; cp latex/doxygen.sty .;)
 
 clean : 
 	$(RM) $(RMFLAGS) $(OBJS) $(TODEL)
