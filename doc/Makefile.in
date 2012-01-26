@@ -568,8 +568,9 @@ clean-local:
 	$(MAKE) -C usermanual clean
 
 usermanual:
-	$(shell if [ $(srcdir) != $(builddir) ]; then cp -ru $(srcdir)/usermanual $(builddir); fi;)
+	$(shell if [ $(srcdir) != $(builddir) ]; then rm -rf $(builddir)/usermanual; cp -ru $(srcdir)/usermanual $(builddir); fi;)
 	VERSION=$(VERSION) SRCDIR=$(srcdir) BUILDDIR=$(builddir) $(MAKE) -C $(builddir)/usermanual
+	(cp $(builddir)/usermanual/libusbwall*.pdf $(builddir))
 
 .PHONY: usermanual
 
