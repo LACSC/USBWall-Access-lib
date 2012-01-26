@@ -1,4 +1,4 @@
-﻿/*
+/*
 ** File usbwall_infos.c for project libusbwall
 **
 ** Made by Philippe THIERRY
