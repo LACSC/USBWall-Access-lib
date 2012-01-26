@@ -5,7 +5,7 @@
 ** Login   <phil@reseau-libre.net>
 **
 ** Started on  jeu. 19 janv. 2012 20:35:50 CET Philippe THIERRY
-** Last update dim. 22 janv. 2012 15:37:21 CET Philippe THIERRY
+** Last update jeu. 26 janv. 2012 21:00:10 CET Philippe THIERRY
 **
 ** Copyright (C) 2009 - Philippe THIERRY
 **
@@ -56,7 +56,7 @@ int	usbwall_init(void)
   int count = 0;
   int release = 0;
 
-  fd = open("/proc/usbwall/release", O_WRONLY);
+  fd = open("/proc/usbwall/release", O_RDONLY);
   if (fd == -1) {
     return ENODEV;
   }
