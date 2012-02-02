@@ -1,3 +1,107 @@
+commit 3221b93475ef5728b01535ede5e6b6e798c2713c
+Author: Philippe Thierry <phil@reseau-libre.net>
+Date:   Thu Jan 26 21:02:16 2012 +0100
+
+    corrected error in release open() call.
+
+commit 9433a79fd30ce4a8512f91ca5458bd4ce81ef5d3
+Author: Philippe Thierry <thierry@ece.fr>
+Date:   Thu Jan 26 10:42:25 2012 +0100
+
+    corrected misswritten char at the begining of the file.
+
+commit 3d22be800ae424d7d528a1c10ea1db9bd2561441
+Author: Philippe Thierry <thierry@ece.fr>
+Date:   Thu Jan 26 10:39:40 2012 +0100
+
+    finishing updating doc generation. Works in builddir and in srcdir.
+
+commit 5dcbb4b8018be64d63ee737ace64e1b9645339af
+Author: Philippe Thierry <thierry@ece.fr>
+Date:   Thu Jan 26 10:35:51 2012 +0100
+
+    fixed doc generation (fist part)
+
+commit b80601266165556955aab0255a6579fb91567583
+Author: Philippe Thierry <thierry@ece.fr>
+Date:   Tue Jan 24 18:30:16 2012 +0100
+
+    updated prod. doc does not compile (builddir support not finished)
+
+commit a063f2847d91e3bbb34eb10d9fe4e6d6a601f634
+Author: Philippe Thierry <thierry@ece.fr>
+Date:   Tue Jan 24 13:36:14 2012 +0100
+
+    updated after bootstrap
+
+commit bfeb616c6292f39a09be73274f3dddd9fc26ab32
+Merge: da74c0a c2eb7f1
+Author: Philippe Thierry <thierry@ece.fr>
+Date:   Tue Jan 24 11:12:57 2012 +0100
+
+    Merge branch 'master' of github.com:LACSC/USBWall-Access-lib
+
+commit da74c0a10e8dcd082344c0eaa22d85faf518892d
+Author: Philippe Thierry <thierry@ece.fr>
+Date:   Tue Jan 24 11:11:58 2012 +0100
+
+    renamed the usbwall module exported structure to be compliant to new module version.
+
+commit c2eb7f14a5ef1a63211832d0587544211f1df129
+Author: Philippe Thierry <phil@reseau-libre.net>
+Date:   Sun Jan 22 17:07:53 2012 +0100
+
+    add block diagram for user manual
+
+commit 594316d2396f626e5c34ac2023ee7f8308232ed9
+Author: Philippe Thierry <phil@reseau-libre.net>
+Date:   Sun Jan 22 16:24:45 2012 +0100
+
+    updated doc generation (proper user manual. make all bug corrected.
+
+commit 71e49b66aa2e7f045b715f71959058a9e4ce7d4d
+Merge: 25bb050 0325023
+Author: Philippe Thierry <phil@reseau-libre.net>
+Date:   Sat Jan 21 17:21:14 2012 +0100
+
+    Merge branch 'master' of ../tmp/usbwall-lib
+
+commit 0325023e23bcd3672ed35ddcfa9cbeee9c7f281a
+Author: Philippe Thierry <thierry@ece.fr>
+Date:   Fri Jan 20 16:05:53 2012 +0100
+
+    add usermanual, 2nd release
+
+commit 40a6419c4644ff9126112bfb35e502630cc20dd5
+Author: Philippe Thierry <thierry@ece.fr>
+Date:   Fri Jan 20 14:36:23 2012 +0100
+
+    add first template of user manual
+
+commit 0f28b8a4e3d35a7ceb4caae9fdd3cb769bf41c39
+Author: Philippe Thierry <thierry@ece.fr>
+Date:   Fri Jan 20 12:54:43 2012 +0100
+
+    add LICENSE file (LGPLv2)
+
+commit 08bddc0f551d897d438cd1c201ce17d5d3fc9a80
+Author: Philippe Thierry <thierry@ece.fr>
+Date:   Fri Jan 20 12:51:54 2012 +0100
+
+    add status high level API
+
+commit c881867cfb3fd69ed14f8ffd6f4f0e2d2c271d7c
+Author: Philippe Thierry <thierry@ece.fr>
+Date:   Fri Jan 20 09:57:25 2012 +0100
+
+    check write() return more properly. Not yet perfect.
+
+commit 25bb05094d7a6aa8e883724f6eb875c3d08f3521
+Author: Philippe Thierry <phil@reseau-libre.net>
+Date:   Thu Jan 19 21:42:10 2012 +0100
+
+    Add real ChangeLog
+
 commit 7e4b91e86ef51b17148a637d675e603bd0123138
 Author: Philippe Thierry <phil@reseau-libre.net>
 Date:   Thu Jan 19 21:31:11 2012 +0100
