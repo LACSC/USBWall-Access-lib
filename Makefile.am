@@ -11,7 +11,7 @@
 SUBDIRS = src doc .
 
 doc:
-	$(MAKE) -C doc all
+	$(MAKE) -C doc doc
 
 .PHONY: doc
 

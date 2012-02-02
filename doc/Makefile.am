@@ -10,9 +10,7 @@
 
 SUBDIRS =  .
 
-all: doc-am usermanual
-
-doc-am:
+doc: usermanual
 	doxygen $(srcdir)/Doxyfile
 
 clean-local:

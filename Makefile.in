@@ -722,7 +722,7 @@ uninstall-am:
 
 
 doc:
-	$(MAKE) -C doc all
+	$(MAKE) -C doc doc
 
 .PHONY: doc
 

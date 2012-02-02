@@ -34,6 +34,7 @@
 **
 */
 
+#include <sys/ioctl.h>
 #include <string.h>
 #include "libusbwall.h"
 #include "usbwall_init.h"
@@ -63,9 +64,10 @@ int usbwall_key_add(uint16_t	vendorid,
   usbwallinfo.info.idProduct = productid;
   strncpy(usbwallinfo.info.idSerialNumber, serial, 32);
 
-  fd = open("/proc/usbwall/key_ctrl", O_WRONLY);
-  res = write(fd,usbwallinfo.buffer, sizeof(struct usbwall_token_info));
+  fd = open("/dev/usbwall", O_WRONLY);
+  res = ioctl(fd, USBWALL_IO_ADDKEY, &(usbwallinfo.info));
   if (res == -1) {
+    close(fd);
     return 1;
   }
   close(fd);
@@ -88,9 +90,10 @@ int usbwall_key_del(uint16_t	vendorid,
   usbwallinfo.info.idProduct = productid;
   strncpy(usbwallinfo.info.idSerialNumber, serial, 32);
 
-  fd = open("/proc/usbwall/key_ctrl", O_WRONLY);
-  res = write(fd,usbwallinfo.buffer, sizeof(struct usbwall_token_info));
+  fd = open("/dev/usbwall", O_WRONLY);
+  res = ioctl(fd, USBWALL_IO_DELKEY, &(usbwallinfo.info));
   if (res == -1) {
+    close(fd);
     return 1;
   }
   close(fd);
