@@ -49,7 +49,7 @@
 */
 int usbwall_key_add(uint16_t	vendorid,
                     uint16_t	productid,
-                    char	*serial)
+                    const char	*serial)
 {
   procfs_info_t usbwallinfo;
   int fd = -1;
@@ -74,7 +74,7 @@ int usbwall_key_add(uint16_t	vendorid,
 
 int usbwall_key_del(uint16_t	vendorid,
                     uint16_t	productid,
-                    char	*serial)
+                    const char	*serial)
 {
   procfs_info_t usbwallinfo;
   int fd = -1;

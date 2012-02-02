@@ -36,6 +36,10 @@
 #ifndef LIBUSBWALL_H_
 # define LIBUSBWALL_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdint.h>
 #include <linux/usb/usbwall.h>
 #include <sys/types.h>
@@ -84,7 +88,7 @@ void	usbwall_release(void);
  */
 int usbwall_key_add(uint16_t	vendorid,
                     uint16_t	productid,
-                    char	*serial);
+                    const char	*serial);
 
 /*!
  ** \brief Delete a given key from the module whitelist.
@@ -99,7 +103,7 @@ int usbwall_key_add(uint16_t	vendorid,
  */
 int usbwall_key_del(uint16_t	vendorid,
                     uint16_t	productid,
-                    char	*serial);
+                    const char	*serial);
 
 /*!
  ** \brief return the current module status.
@@ -116,5 +120,9 @@ char	*usbwall_get_status(void);
 ** \return a positive value corresponding to the release code, or 0 if it fails to get it
 */
 long	usbwall_get_release(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* !LIBUSBWALL_H_ */

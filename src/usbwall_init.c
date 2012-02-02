@@ -56,7 +56,7 @@ int	usbwall_init(void)
   int count = 0;
   int release = 0;
 
-  fd = open("/proc/usbwall/release", O_WRONLY);
+  fd = open("/proc/usbwall/release", O_RDONLY);
   if (fd == -1) {
     return ENODEV;
   }
